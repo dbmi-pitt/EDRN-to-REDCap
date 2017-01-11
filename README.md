@@ -1,7 +1,7 @@
 # EDRN-to-REDCap
 Migration of EDRN into REDCap
 
-***Instructions***
+****Instructions****
 
 1.	Create the project in REDCap, named ‘EDRN’ and enable Longitudinal data collection under main project settings.
 
@@ -16,7 +16,8 @@ Migration of EDRN into REDCap
 6.	Upload the import template via Data Import Tool into the project
 
 
-***Yet to do***
+****Yet to do****
+
 Translate EDRN calculated fields into REDCap calculated fields. (See list-of-calc-fields.xlsx)
 Refine export script to reduce number of duplicates
 Create events in REDCap for different stages of data entry
