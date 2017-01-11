@@ -20,4 +20,4 @@ Migration of EDRN into REDCap
 
 Translate EDRN calculated fields into REDCap calculated fields. (See list of calc fields.xlsx).<br>
 Refine export script to reduce number of duplicates.<br>
-Create events in REDCap for different stages of data entry.<br>
+Create events in REDCap for different stages of data entry, turning the project into a longitudinal study.<br>
