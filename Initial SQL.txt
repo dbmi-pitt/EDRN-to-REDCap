@@ -1,0 +1,96 @@
+select * from edrn_new.coloniccancerdetails;
+select distinct type_of_specimen from edrn_new.coloniccancerdetails;
+select * from edrn.md$$_all_data_elements where organ_id = 1; -- colon 2 is liver;
+select distinct organ_id from edrn.z_md$$_all_data_elements;
+select * from edrn.md$$_organ_list;
+
+create table edrn_new.data_elements as select * from edrn.md$$_all_data_elements;
+select * from edrn_new.data_elements;
+
+select distinct security_level from edrn_new.data_elements;
+select *  from edrn_new.data_elements where display_data_type = 'COMBO_BOX';
+
+-- short_name - field label
+-- date_type - field type : DATE, NUMBER, CHARACTER
+-- required - required field : YES, NO
+-- LOW_VALUE, HIGH_VALUE - use info for manual text validation
+-- MULTILINE us note field if ever you find one ALLAN
+-- single answer helps determine field type
+-- display_data_type helps determine field type SYSTEM,ENTERABLE,COMBO_BOX ( split into two fields if no of the above),RADIO_BUTTON,RELATION,CHECK_BOX  
+-- display_order use to sort elements on the page
+-- tooltip_text - field annotation
+-- ACTIVE_YN ( use to determine if you should use it)
+-- DISPLAY_WIDTH use for validation if set
+-- ALIGN_TEXT - use for default - custom alignment
+select * from edrn.MDE where element_id = 1;
+select * from edrn.MD$$_ALL_DATA_ELEMENTS where element_id = 1;
+
+
+
+-- from MDV get your choices lists
+select * from edrn.MDV order by element_id, element_value_id;
+select element_id, element_value_id, value from edrn.MD$$_ELEMENT_VALUES order by element_id, element_value_id;
+
+-- short_name - field label
+-- date_type - field type : DATE, NUMBER, CHARACTER
+-- required - required field : YES, NO
+-- LOW_VALUE, HIGH_VALUE - use info for manual text validation
+-- MULTILINE us note field if ever you find one ALLAN
+-- single answer helps determine field type
+-- display_data_type helps determine field type SYSTEM,ENTERABLE,COMBO_BOX ( split into two fields if no of the above),RADIO_BUTTON,RELATION,CHECK_BOX  
+-- display_order use to sort elements on the page
+-- tooltip_text - field annotation
+-- ACTIVE_YN ( use to determine if you should use it)
+-- DISPLAY_WIDTH use for validation if set
+-- ALIGN_TEXT - use for default - custom alignment
+
+create table edrn_new.data_dictionary as select 
+element_id,
+'1' as "Variable / Field Name",
+element_group_id as "Form Name",
+'1' as "Section Header",
+data_type as "Field Type",
+short_name as "Field Label",
+'1' as "Choices",
+'1' as "Field Note",
+'1' as "Text Validation",
+low_value as "Text Validation Min",
+high_value as "Text Validation Max",
+'1' as "Identifier?",
+'1' as "Branching Logic",
+required as "Required Field?",
+align_text as "Custom Alignment",
+'1' as "Question Number",
+'1' as "Matrix Group Name",
+'1' as "Matrix Ranking?",
+tooltip_text as "Field Annotation",
+multiline_display as "N=text Y=notes",
+single_answer as "N=checkboxes Y=radio drop down",
+display_data_type as "Help determine field type"
+from edrn.md$$_all_data_elements where active_yn = 'YES' order by 3,display_order;
+
+select * from edrn.md$$_all_data_elements where  element_group_id = 4;
+
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = '';
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = (SELECT element_group_id FROM edrn.md$$_all_data_elements WHERE element_id = EDRN_NEW.DATA_DICTIONARY.ELEMENT_ID);
+
+SELECT * FROM EDRN_NEW.DATA_DICTIONARY;
+--DELETE FROM EDRN_NEW.DATA_DICTIONARY WHERE "Form Name" in ('1','2');
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Demographics and History' WHERE "Form Name" IN ('5','6','13','8','9','7','14');
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Research Consent Elements' WHERE "Form Name" = '4';
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Case Identification' WHERE "Form Name" = '3';
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Therapy Event' WHERE "Form Name" = '10';
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Secondary Contacts' WHERE "Form Name" = '11';
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Specimen Details' WHERE "Form Name" = '20';
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Accession Information' WHERE "Form Name" IN ('12','21','24','23','25','28','27');
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Inventory Summary' WHERE "Form Name" IN ('37','40');
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Form Name" = 'Global Database Statistics' WHERE "Form Name" IN ('30','31','32','33','34','35','36');
+--UPDATE EDRN_NEW.DATA_DICTIONARY SET "Variable / Field Name" = '', "Section Header" = '', "Choices" = '', "Field Note" = '', "Text Validation" = '', "Identifier?" = '', "Branching Logic" = '', "Question Number" = '', "Matrix Group Name" = '', "Matrix Ranking?" = ''
+
+
+
+
+SELECT * FROM edrn.md$$_all_data_elements where element_id in (97,98,99,71,72,100,286,285);
+SELECT * FROM EDRN.MD$$_ELEMENT_GROUPS WHERE main_group_id = 20 order by DISPLAY_ORDER;
+SELECT * FROM EDRN.MD$$_ELEMENT_VALUES where element_id in (97,98,99,71,72,100,286,285) ORDER BY 1;
+SELECT * FROM EDRN.MD$$_MAIN_GROUPS order by 1;
