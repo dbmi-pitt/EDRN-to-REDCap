@@ -25,5 +25,5 @@ Dates need date format validation<br>
 Reformat the exported data to place longitudinal events in the proper columns<br>
 Run Data Quality checks<br>
 It looks like Global Database statistics has some problems. It only fills in one field and it is a code number instead of showing the value. <br>
-I think Yes/No may not be converted properly ( generally) . It’s a vague memory I have. <br>
+**DONE** The yes/no case when's didn't exist in the export script. - I think Yes/No may not be converted properly ( generally) . It’s a vague memory I have. <br>
 change those goofy year fields to be a number instead of check boxes like procedure_date_range I think they did it that way because of a edrn limitation.<br>
