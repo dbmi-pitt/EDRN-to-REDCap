@@ -23,6 +23,7 @@ Refine export script to reduce number of duplicates.<br>
 Reformat the exported data to place longitudinal events in the proper columns<br>
 Run Data Quality checks<br>
 It looks like Global Database statistics has some problems. It only fills in one field and it is a code number instead of showing the value. <br>
+Accession information - Date of procedure, confirm data is ther <br>
 
 ****COMPLETE****
 
